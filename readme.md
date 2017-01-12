@@ -1,4 +1,4 @@
-**Colorado Mesa CS Labs - Rancher Catalog**
+### Colorado Mesa CS Labs - Rancher Catalog
 
 ## Overview
 
