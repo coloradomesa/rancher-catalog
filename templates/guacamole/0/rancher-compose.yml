@@ -1,0 +1,11 @@
+.catalog:
+    name: "Guacamole RDP Proxy"
+    version: "v0.9.9"
+    description: ""
+    
+guac-mysql:
+  scale: 1
+guacd:
+  scale: 1
+guacamole-web:
+  scale: 1

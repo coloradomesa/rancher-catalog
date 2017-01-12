@@ -1,0 +1,36 @@
+version: '2'
+services:
+  guac-mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: guacamole_db
+      MYSQL_PASSWORD: guacamole_pw
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_USER: guacamole_user
+    volume_driver: convoy-nfs
+    stdin_open: true
+    volumes:
+    - guac-mysql:/var/lib/mysql
+    tty: true
+  guacd:
+    image: glyptodon/guacd:0.9.9
+    hostname: guacd
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+  guacamole-web:
+    image: glyptodon/guacamole:0.9.9
+    environment:
+      MYSQL_DATABASE: guacamole_db
+      MYSQL_PASSWORD: guacamole_pw
+      MYSQL_USER: guacamole_user
+    stdin_open: true
+    tty: true
+    links:
+    - guac-mysql:mysql
+    - guacd:guacd
+    ports:
+    - 50241:8080/tcp
+    labels:
+      io.rancher.container.pull_image: always
