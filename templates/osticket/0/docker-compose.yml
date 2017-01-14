@@ -20,7 +20,9 @@ services:
       ADMIN_USERNAME: ${ADMIN_USERNAME}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       INSTALL_NAME: ${INSTALL_NAME}
-    ports: 
-    - "8080:80"
+    links:
+    - osticket-mysql:mysql
+    ports:
+    - ${WEB_PORT}:80/tcp
     stdin_open: true
     tty: true
