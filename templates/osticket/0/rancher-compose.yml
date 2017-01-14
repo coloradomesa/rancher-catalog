@@ -1,0 +1,54 @@
+version: '2'
+.catalog:
+    name: "osTicket Support Ticket System"
+    version: v1.9.14
+    description: "Open source ticketing system based on campbellsoftwaresolutions/osticket."
+    questions:
+    - variable: INSTALL_NAME
+      label: "Name of Help Desk"
+      description: "Give your helpdesk a name before installing (can be changed later)"
+      required: false
+      default: "My Helpdesk"
+      type: string
+    - variable: WEB_PORT
+      label: "Port on host for web interface"
+      description: "Optional: Define a port for the web interface on the host"
+      required: false
+      default: "8080"
+      type: string
+    - variable: VOL_NAME
+      label: "Persistent Volume Name"
+      description: "Name of volume to use for persistent storage"
+      required: true
+      type: string
+      default: "osticket-mysql"
+    - variable: VOL_DRIVER
+      label: "Volume Driver"
+      description: "Volume driver to use for persistent storage (e.g. convoy-nfs)"
+      required: false
+      type: string
+    - variable: MYSQL_ROOT_PASSWORD
+      label: "MySQL Root Password"
+      description: "Root password for database server (make it secure!)"
+      required: true
+      type: string
+    - variable: MYSQL_PASSWORD
+      label: "MySQL User Password"
+      description: "Set the password for the default 'osticket' user"
+      required: true
+      type: string
+    - variable: ADMIN_USERNAME
+      label: "Initial Username for Admin Account"
+      description: "Username for admin account, can be changed after deployment"
+      required: false
+      type: string
+      default: ostadmin
+    - variable: ADMIN_PASSWORD
+      label: "Initial Password for Admin Account"
+      description: "Password for admin account, can be changed after deployment"
+      required: false
+      type: string
+      default: Admin1
+services:
+  osticket-mysql:
+    scale: 1
