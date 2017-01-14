@@ -1,8 +1,41 @@
+version: '2'
 .catalog:
     name: "Guacamole RDP Proxy"
     version: "v0.9.9"
     description: ""
-    
+    questions:
+    - variable: MYSQL_DATABASE
+      description: "Database to use on MySQL Server"
+      label: "MySQL Database"
+      required: true
+      type: string
+    - variable: MYSQL_USER
+      description: "Username to connect to MySQL Server"
+      label: "MySQL Username"
+      required: true
+      type: string
+    - variable: MYSQL_PASSWORD
+      description: "Database user password"
+      label: "MySQL Password"
+      required: true
+      type: string
+    - variable: WEB_PORT
+      description: "Port to expose on host for web interface"
+      label: "Web interface public port"
+      required: false
+      default: "8080"
+      type: string
+    - variable: VOL_MYSQL
+      description: "Volume to store database files"
+      label: "Docker Volume"
+      required: false
+      default: "guac-mysql"
+      type: string
+    - variable: VOL_DRIVER
+      description: "Volume driver to use"
+      label: "Volume Driver (e.g. convoy-nfs)"
+      required: false
+      type: string
 guac-mysql:
   scale: 1
 guacd:

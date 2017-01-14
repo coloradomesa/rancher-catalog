@@ -1,0 +1,5 @@
+name: osTicket
+description: |
+  Open Source IT Helpdesk ticket web application
+version: v0.1.0
+category: Services
