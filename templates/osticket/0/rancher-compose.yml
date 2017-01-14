@@ -1,4 +1,3 @@
-version: '2'
 .catalog:
     name: "osTicket Support Ticket System"
     version: v1.9.14
