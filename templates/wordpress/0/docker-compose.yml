@@ -9,6 +9,8 @@ services:
         - ${DB_VOLUME}:/var/lib/mysql
     wordpress:
         image: wordpress
+        depends_on:
+          - "mariadb"
         volumes:
         - ${WP_VOLUME}:/var/www/html
         volume_driver: ${VOL_DRIVER}
