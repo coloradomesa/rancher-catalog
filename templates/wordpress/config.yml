@@ -1,0 +1,5 @@
+name: Wordpress
+description: |
+    Wordpress service using mariadb, php-ldap enabled wordpress, and FTP server
+version: v0.1.0
+category: Websites

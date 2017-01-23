@@ -1,0 +1,50 @@
+version: '2'
+.catalog:
+    name: Wordpress
+    version: v0.1.0
+    description: Wordpress with FTP and MariaDB
+    questions:
+    - variable: DB_ROOT_PW
+      label: Database root password
+      description: Enter the root password to use on the MariaDB instance
+      required: true
+      type: string
+    - variable: DB_VOLUME
+      label: Volume name for database storage
+      description: Enter volume name or host directory to use for database storage
+      required: true
+      type: string
+    - variable: WP_VOLUME
+      label: Volume name for wordpress web root
+      description: Enter volume name or host directory to store wordpress files
+      required: true
+      type: string
+    - variable: VOL_DRIVER
+      label: Select a volume driver to use
+      type: enum
+      options:
+        - rancher-nfs
+        - rancher-efs
+        - rancher-ebs
+        - convoy-nfs
+        -
+    - variable: WP_PORT
+      label: Port number for web server
+      description: Enter the port number for the web server where wordpress will be hosted
+      type: string
+    - variable: FTP_USER
+      label: Username for internal FTP server
+      description: Set the username for the internal FTP server
+      required: true
+      type: string
+    - variable: FTP_PASS
+      label: Password for FTP User
+      required: true
+      type: password
+services:
+    mariadb:
+        scale: 1
+    wordpress:
+        scale: 1
+    vsftpd:
+        scale: 1
